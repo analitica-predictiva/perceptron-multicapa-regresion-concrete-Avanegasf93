@@ -19,13 +19,13 @@ def pregunta_01():
     df = pd.read_csv("concrete.csv") 
 
     # Asigne la columna `strength` a la variable `y`.
-    y = df["strength"].values
+    y = df["strength"]
 
     # Asigne una copia del dataframe `df` a la variable `X`.
     x = df.copy()  
 
     # Remueva la columna `strength` del DataFrame `X`.
-    x=x.drop(columns="strength", axis=1, inplace=True)  
+    x.drop(columns="strength", axis=1, inplace=True)  
 
     # Retorne `X` y `y`
     return x, y
@@ -53,7 +53,7 @@ def pregunta_02():
     ) = train_test_split(  
         x,  
         y,  
-        test_size=0.75,  
+        test_size=0.25,  
         random_state=12453,  
     )  
 
@@ -111,11 +111,11 @@ def pregunta_04():
     #   * Use parada temprana
 
     param_grid = {
-        "mlpregressor__hidden_layer_sizes": range(1,8),
+        "mlpregressor__hidden_layer_sizes": range(1,9),
         "mlpregressor__activation": ["relu"],
         "mlpregressor__learning_rate": ["adaptive"],  
-        "mlpregressor__momentum": (0.7, 0.8, 0.9),  
-        "mlpregressor__learning_rate_init": (0.01, 0.05, 0.1),  
+        "mlpregressor__momentum": [0.7, 0.8, 0.9],  
+        "mlpregressor__learning_rate_init": [0.01, 0.05, 0.1],  
         "mlpregressor__max_iter": [5000],  
         "mlpregressor__early_stopping": [True],  
     }
