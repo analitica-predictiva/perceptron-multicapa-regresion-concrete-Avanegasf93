@@ -19,7 +19,7 @@ def pregunta_01():
     df = pd.read_csv("concrete.csv") 
 
     # Asigne la columna `strength` a la variable `y`.
-    y = df["strength"]
+    y = df["strength"].values
 
     # Asigne una copia del dataframe `df` a la variable `X`.
     x = df.copy()  
@@ -111,7 +111,7 @@ def pregunta_04():
     #   * Use parada temprana
 
     param_grid = {
-        "mlpregressor__hidden_layer_sizes": range(1,9,1),
+        "mlpregressor__hidden_layer_sizes": range(1,8),
         "mlpregressor__activation": ["relu"],
         "mlpregressor__learning_rate": ["adaptive"],  
         "mlpregressor__momentum": (0.7, 0.8, 0.9),  
