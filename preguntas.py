@@ -16,19 +16,19 @@ def pregunta_01():
     Carga y separación de los datos en `X` `y`
     """
     # Lea el archivo `concrete.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv("concrete.csv", sep=',') 
+    df = pd.read_csv("concrete.csv") 
 
     # Asigne la columna `strength` a la variable `y`.
     y = df["strength"].values
 
     # Asigne una copia del dataframe `df` a la variable `X`.
-    X = df.copy()  
+    x = df.copy()  
 
     # Remueva la columna `strength` del DataFrame `X`.
-    X=X.drop(columns="strength", axis=1, inplace=True)  
+    X=x.drop(columns="strength", axis=1, inplace=True)  
 
     # Retorne `X` y `y`
-    return X, y
+    return x, y
     
 
 
@@ -130,7 +130,7 @@ def pregunta_04():
         estimator=estimator,
         param_grid=param_grid,
         cv = 5,
-        scoring = "r2"
+        scoring = "r2",
     )
 
     return gridsearchcv
