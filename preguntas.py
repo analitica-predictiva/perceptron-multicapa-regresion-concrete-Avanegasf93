@@ -19,7 +19,7 @@ def pregunta_01():
     df = pd.read_csv("concrete.csv", sep=',') 
 
     # Asigne la columna `strength` a la variable `y`.
-    y = df["strength"]
+    y = df["strength"].values
 
     # Asigne una copia del dataframe `df` a la variable `X`.
     X = df.copy()  
@@ -111,8 +111,8 @@ def pregunta_04():
     #   * Use parada temprana
 
     param_grid = {
-        "mlpregressor__hidden_layer_sizes": range(1, 8),
-        "mlpregressor__activation": ["relu"],  
+        "mlpregressor__hidden_layer_sizes": range(1,9,1),
+        "mlpregressor__activation": ["relu"],
         "mlpregressor__learning_rate": ["adaptive"],  
         "mlpregressor__momentum": (0.7, 0.8, 0.9),  
         "mlpregressor__learning_rate_init": (0.01, 0.05, 0.1),  
@@ -130,7 +130,7 @@ def pregunta_04():
         estimator=estimator,
         param_grid=param_grid,
         cv = 5,
-        scoring = "r2",
+        scoring = "r2"
     )
 
     return gridsearchcv
